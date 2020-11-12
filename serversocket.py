@@ -63,7 +63,7 @@ class ServerSocket:
                 cv2.imshow("image", decimg)
                 cv2.imwrite('./' + str(self.TCP_PORT) + '_images' + str(self.folder_num) + '/img' + cnt_str + '.jpg', decimg)
                 cv2.waitKey(1)
-                if (cnt == 60 * 10 * 10):
+                if (cnt == 60 * 10):
                     cnt = 0
                     convertThread = threading.Thread(target=self.convertImage(str(self.folder_num), 6000, startTime))
                     convertThread.start()
@@ -89,6 +89,14 @@ class ServerSocket:
         except OSError as e:
             if e.errno != errno.EEXIST:
                 print("Failed to create " + folder_name + " directory")
+                raise
+
+        try:
+            if not os.path.exists("../videos"):
+                os.makedirs(os.path.join("../videos"))
+        except OSError as e:
+            if e.errno != errno.EEXIST:
+                print("Failed to create ../videos directory")
                 raise
         
     def recvall(self, sock, count):

@@ -6,7 +6,7 @@ import base64
 import sys
 from datetime import datetime
 
-class ClientSocket:
+class ClientVideoSocket:
     def __init__(self, ip, port, video_path):
         self.TCP_SERVER_IP = ip
         self.TCP_SERVER_PORT = port
@@ -66,7 +66,7 @@ def main():
     TCP_IP = 'localhost'
     TCP_PORT = 8080 
     video_path = './big_buck_bunny_720p_10mb.mp4'
-    client = ClientSocket(TCP_IP, TCP_PORT, video_path)
+    client = ClientVideoSocket(TCP_IP, TCP_PORT, video_path)
 
 if __name__ == "__main__":
     main()

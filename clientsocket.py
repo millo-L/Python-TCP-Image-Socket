@@ -52,7 +52,7 @@ class ClientSocket:
                 self.sock.send(stime.encode('utf-8').ljust(64))
                 print(u'send images %d'%(cnt))
                 cnt+=1
-                time.sleep(0.02)
+                time.sleep(0.095)
         except Exception as e:
             print(e)
             self.sock.close()
